@@ -1,4 +1,6 @@
 ---
+import HeaderNav from '../components/HeaderNav.astro';
+import MenuButton from '../components/MenuButton';
 interface Props {
 	title: string;
 }
@@ -17,6 +19,8 @@ const { title } = Astro.props;
 		<title>{title}</title>
 	</head>
 	<body class="min-h-screen bg-black flex justify-center items-center">
+		<HeaderNav />
 		<slot />
+		<MenuButton client:load />
 	</body>
 </html>

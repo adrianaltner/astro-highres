@@ -1,86 +1,99 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
+import Slideshow from "../components/Slideshow";
+
+
+const slides = [
+  {
+    image: "123.webp",
+    title: "First Section Content",
+    description: "Description for first section.",
+    quote:
+      "The only limit to our realization of tomorrow is our doubts of today.",
+    author: "Franklin D. Roosevelt",
+  },
+  {
+    image: "345.webp",
+    title: "Second Section Content",
+    description: "Description for second section.",
+    quote: "Life is 10% what happens to us and 90% how we react to it.",
+    author: "Charles R. Swindoll",
+  },
+  {
+    image: "123.webp",
+    title: "Third Section Content",
+    description: "Description for third section.",
+    quote: "The purpose of our lives is to be happy.",
+    author: "Dalai Lama",
+  },
+  {
+    image: "345.webp",
+    title: "Fourth Section Content",
+    description: "Description for fourth section.",
+    quote: "Get busy living or get busy dying.",
+    author: "Stephen King",
+  },
+];
 ---
 
 <Layout title="Highres">
-    <style>
-        /* Custom scrollbar hiding */
-        .no-scrollbar::-webkit-scrollbar {
-            display: none; /* Hides scrollbar for Chrome, Safari, and Edge */
-        }
-
-        .no-scrollbar {
-            -ms-overflow-style: none; /* Hides scrollbar for Internet Explorer and Edge */
-            scrollbar-width: none; /* Hides scrollbar for Firefox */
-        }
-    </style>
-
-    <main>
-        <!-- Outer container with black border -->
-        <div class="relative w-[calc(100vw-60px)] h-[calc(100vh-60px)] border border-black overflow-hidden">
-
-            <!-- Scrollable container -->
-            <div class="flex overflow-x-auto w-full h-full snap-x snap-mandatory scroll-smooth no-scrollbar">
-                <!-- First image container -->
-                <div id="section1" class="min-w-full h-full snap-start relative flex justify-center items-center">
-                    <img src="123.webp" alt="First Image" class="absolute inset-0 w-full h-full object-cover">
-                    <div class="absolute bottom-4 left-4 text-white bg-black bg-opacity-50 p-4 rounded">
-                        <h1 class="text-3xl font-bold">First Section Content</h1>
-                        <p class="mt-4">This is some content over the first image.</p>
-                    </div>
-                    <!-- Right navigation arrow -->
-                    <a href="#section2" class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white rounded-full p-2 hover:bg-gray-700 transition">
-                        &rarr;
-                    </a>
-                </div>
-
-                <!-- Second image container -->
-                <div id="section2" class="min-w-full h-full snap-start relative flex justify-center items-center">
-                    <img src="345.webp" alt="Second Image" class="absolute inset-0 w-full h-full object-cover">
-                    <div class="absolute bottom-4 left-4 text-white bg-black bg-opacity-50 p-4 rounded">
-                        <h1 class="text-3xl font-bold">Second Section Content</h1>
-                        <p class="mt-4">This is some content over the second image.</p>
-                    </div>
-                    <!-- Left navigation arrow -->
-                    <a href="#section1" class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white rounded-full p-2 hover:bg-gray-700 transition">
-                        &larr;
-                    </a>
-                    <!-- Right navigation arrow -->
-                    <a href="#section3" class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white rounded-full p-2 hover:bg-gray-700 transition">
-                        &rarr;
-                    </a>
-                </div>
-
-                <!-- Third image container -->
-                <div id="section3" class="min-w-full h-full snap-start relative flex justify-center items-center">
-                    <img src="345.webp" alt="Third Image" class="absolute inset-0 w-full h-full object-cover">
-                    <div class="absolute bottom-4 left-4 text-white bg-black bg-opacity-50 p-4 rounded">
-                        <h1 class="text-3xl font-bold">Third Section Content</h1>
-                        <p class="mt-4">This is some content over the third image.</p>
-                    </div>
-                    <!-- Left navigation arrow -->
-                    <a href="#section2" class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white rounded-full p-2 hover:bg-gray-700 transition">
-                        &larr;
-                    </a>
-                    <!-- Right navigation arrow -->
-                    <a href="#section4" class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white rounded-full p-2 hover:bg-gray-700 transition">
-                        &rarr;
-                    </a>
-                </div>
-
-                <!-- Fourth image container -->
-                <div id="section4" class="min-w-full h-full snap-start relative flex justify-center items-center">
-                    <img src="345.webp" alt="Fourth Image" class="absolute inset-0 w-full h-full object-cover">
-                    <div class="absolute bottom-4 left-4 text-white bg-black bg-opacity-50 p-4 rounded">
-                        <h1 class="text-3xl font-bold">Fourth Section Content</h1>
-                        <p class="mt-4">This is some content over the fourth image.</p>
-                    </div>
-                    <!-- Left navigation arrow -->
-                    <a href="#section3" class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white rounded-full p-2 hover:bg-gray-700 transition">
-                        &larr;
-                    </a>
-                </div>
-            </div>
-        </div>
-    </main>
+  <main class="min-h-screen w-full bg-white">
+    <!-- Hero Section with Slideshow -->
+    <Slideshow client:load slides={slides} />
+    <!-- Article Section -->
+    <section class="w-full py-16 max-w-7xl mx-auto px-4">
+      <article class="prose lg:prose-xl">
+        <h2 class="text-4xl font-bold mb-8">Welcome to Our Story</h2>
+        <p class="mb-6">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        </p>
+        <p class="mb-6">
+          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+        <h3 class="text-2xl font-bold mb-4">Our Mission</h3>
+        <p class="mb-6">
+          Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+        </p>
+      </article>
+    </section>
+    <section class="w-full py-16 max-w-7xl mx-auto px-4">
+      <article class="prose lg:prose-xl">
+        <h2 class="text-4xl font-bold mb-8">Welcome to Our Story</h2>
+        <p class="mb-6">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        </p>
+        <p class="mb-6">
+          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+        <h3 class="text-2xl font-bold mb-4">Our Mission</h3>
+        <p class="mb-6">
+          Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+        </p>
+      </article>
+    </section>
+    <section class="w-full py-16 max-w-7xl mx-auto px-4">
+      <article class="prose lg:prose-xl">
+        <h2 class="text-4xl font-bold mb-8">Welcome to Our Story</h2>
+        <p class="mb-6">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        </p>
+        <p class="mb-6">
+          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+        <h3 class="text-2xl font-bold mb-4">Our Mission</h3>
+        <p class="mb-6">
+          Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+        </p>
+      </article>
+    </section>
+    <section class="video-section py-16">
+      <h2 class="text-3xl font-bold text-center mb-4">Watch Our Video</h2>
+      <div class="flex justify-center">
+        <video autoplay loop>
+          <source src="236893_medium.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </section>
+  </main>
 </Layout>
