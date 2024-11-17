@@ -37,16 +37,16 @@ const MenuButton: React.FC = () => {
         <div>
             <button
                 onClick={handleClick}
-                className="menu-button fixed bottom-3 w-20 h-20 right-3 text-xl bg-blue-500 text-white rounded-full shadow-lg hover:bg-blue-600 transition z-60  md:hidden"
+                className="menu-button fixed bottom-3 w-20 h-20 right-3 text-xl bg-blue-500 text-white rounded-full shadow-lg hover:bg-blue-600 transition z-50  md:hidden"
             >Menu
             </button>
             {isVisible && (
-                <ul className={`fixed  text-center menu z-60 md:hidden transition-opacity duration-300 w-[100px] bottom-[100px] right-[50px] ${isOpen ? 'animate-fade-in opacity-100' : 'animate-fade-out opacity-0'}`}>
+                <ul className={`fixed  text-center menu z-50 md:hidden transition-opacity duration-300 w-[100px] bottom-[100px] right-[50px] ${isOpen ? 'animate-fade-in opacity-100' : 'animate-fade-out opacity-0'}`}>
                     <li className='mb-2 bg-red-600 p-2 rounded-3xl shadow-md text-zinc-50'><a href="/" className="block hover:underline">Home</a></li>
                     <li className='mb-2 bg-red-600 p-2 rounded-3xl shadow-md text-zinc-50'><a href="/blog" className="block hover:underline">Blog</a></li>
                     <li className='mb-2 bg-red-600 p-2 rounded-3xl shadow-md text-zinc-50'><a href="/photos" className="block hover:underline">Photos</a></li>
-                    <li className='mb-2 bg-red-600 p-2 rounded-3xl shadow-md text-zinc-50'><a href="/about" className="block hover:underline">About</a></li>
-                    <li className='mb-2 bg-red-600 p-2 rounded-3xl shadow-md text-zinc-50'><a href="/about" className="block hover:underline">About</a></li>
+                    <li className='mb-2 bg-red-600 p-2 rounded-3xl shadow-md text-zinc-50'><a href="/footage" className="block hover:underline">Footage</a></li>
+                    <li className='mb-2 bg-red-600 p-2 rounded-3xl shadow-md text-zinc-50'><a href="/journeys" className="block hover:underline">Journeys</a></li>
                     <li className='mb-2 bg-red-600 p-2 rounded-3xl shadow-md text-zinc-50'><a href="/about" className="block hover:underline">About</a></li>
                     <li className='mb-2 bg-red-600 p-2 rounded-3xl shadow-md text-zinc-50'><a href="/about" className="block hover:underline">About</a></li>
                 </ul>
