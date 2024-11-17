@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 
 interface SlideData {
     image: string;
@@ -15,14 +15,40 @@ interface SlideshowProps {
 
 const Slideshow: React.FC<SlideshowProps> = ({ slides, autoplayInterval = 8000 }) => {
     const [currentSlide, setCurrentSlide] = useState(0);
+    const [isPaused, setIsPaused] = useState(false);
 
+    // Handle scroll events
     useEffect(() => {
+        let scrollTimeout: NodeJS.Timeout;
+        
+        const handleScroll = () => {
+            setIsPaused(true);
+            
+            // Resume slideshow after 2 seconds of no scrolling
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                setIsPaused(false);
+            }, 2000);
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+            clearTimeout(scrollTimeout);
+        };
+    }, []);
+
+    // Autoplay effect
+    useEffect(() => {
+        if (isPaused) return;
+
         const interval = setInterval(() => {
             setCurrentSlide((current) => (current + 1) % slides.length);
         }, autoplayInterval);
 
         return () => clearInterval(interval);
-    }, [autoplayInterval, slides.length]);
+    }, [autoplayInterval, slides.length, isPaused]);
 
     const goToSlide = (index: number) => {
         setCurrentSlide(index);
