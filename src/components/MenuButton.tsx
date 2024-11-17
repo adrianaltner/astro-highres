@@ -45,8 +45,8 @@ const MenuButton: React.FC = () => {
                     <li className='mb-2 bg-red-600 p-2 rounded-3xl shadow-md text-zinc-50'><a href="/" className="block hover:underline">Home</a></li>
                     <li className='mb-2 bg-red-600 p-2 rounded-3xl shadow-md text-zinc-50'><a href="/blog" className="block hover:underline">Blog</a></li>
                     <li className='mb-2 bg-red-600 p-2 rounded-3xl shadow-md text-zinc-50'><a href="/photos" className="block hover:underline">Photos</a></li>
-                    <li className='mb-2 bg-red-600 p-2 rounded-3xl shadow-md text-zinc-50'><a href="/about" className="block hover:underline">About</a></li>
-                    <li className='mb-2 bg-red-600 p-2 rounded-3xl shadow-md text-zinc-50'><a href="/about" className="block hover:underline">About</a></li>
+                    <li className='mb-2 bg-red-600 p-2 rounded-3xl shadow-md text-zinc-50'><a href="/footage" className="block hover:underline">Footage</a></li>
+                    <li className='mb-2 bg-red-600 p-2 rounded-3xl shadow-md text-zinc-50'><a href="/journeys" className="block hover:underline">Journeys</a></li>
                     <li className='mb-2 bg-red-600 p-2 rounded-3xl shadow-md text-zinc-50'><a href="/about" className="block hover:underline">About</a></li>
                     <li className='mb-2 bg-red-600 p-2 rounded-3xl shadow-md text-zinc-50'><a href="/about" className="block hover:underline">About</a></li>
                 </ul>

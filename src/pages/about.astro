@@ -1,0 +1,176 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="About Me">
+  <main class="bg-gradient-to-b from-slate-50 to-white min-h-screen">
+    <!-- Hero Section -->
+    <section class="relative h-[50vh] flex items-center justify-center">
+      <div class="absolute inset-0 overflow-hidden">
+        <div class="absolute inset-0 bg-black opacity-30"></div>
+        <img 
+          src="https://loremflickr.com/2560/1440" 
+          alt="Photography Background" 
+          class="w-full h-full object-cover"
+        />
+      </div>
+      <div class="relative z-10 text-center">
+        <h1 class="text-5xl font-bold mb-4 text-white">Adrian Altner</h1>
+        <p class="text-xl text-slate-100">Photographer & Visual Storyteller</p>
+      </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto px-4 py-16 space-y-24">
+      
+      <!-- About Section -->
+      <section class="grid md:grid-cols-2 gap-12 items-center">
+        <div class="space-y-6">
+          <h2 class="text-3xl font-bold text-slate-800">The Story Behind the Lens</h2>
+          <p class="text-slate-600 leading-relaxed">
+            [Your compelling personal story and journey in photography]
+          </p>
+          <div class="flex gap-4">
+            <a href="#" class="text-slate-600 hover:text-slate-800 transition-colors">Instagram</a>
+            <a href="#" class="text-slate-600 hover:text-slate-800 transition-colors">500px</a>
+            <a href="#" class="text-slate-600 hover:text-slate-800 transition-colors">LinkedIn</a>
+          </div>
+        </div>
+        <div class="relative">
+          <img 
+            src="https://loremflickr.com/800/800" 
+            alt="Adrian Altner" 
+            class="rounded-lg shadow-xl"
+          />
+        </div>
+      </section>
+
+      <!-- Work Experience -->
+      <section class="space-y-8">
+        <h2 class="text-3xl font-bold text-slate-800">Professional Journey</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-100">
+            <h3 class="text-xl font-semibold mb-2 text-slate-800">Freelance Photographer</h3>
+            <p class="text-slate-500">2020 - Present</p>
+            <ul class="mt-4 space-y-2 text-slate-600">
+              <li>• Specialized in landscape and wildlife photography</li>
+              <li>• Published in [Notable Publications]</li>
+              <li>• Led photography workshops and tours</li>
+            </ul>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-100">
+            <h3 class="text-xl font-semibold mb-2 text-slate-800">Previous Role</h3>
+            <p class="text-slate-500">2018 - 2020</p>
+            <ul class="mt-4 space-y-2 text-slate-600">
+              <li>• [Previous experience details]</li>
+              <li>• [Notable achievements]</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Photography Gear -->
+      <section class="space-y-8">
+        <h2 class="text-3xl font-bold text-slate-800">My Gear</h2>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-100">
+            <h3 class="text-xl font-semibold mb-4 text-slate-800">Cameras</h3>
+            <ul class="space-y-2 text-slate-600">
+              <li>• Sony A7R IV</li>
+              <li>• Canon EOS R5</li>
+              <li>• DJI Air 2S</li>
+            </ul>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-100">
+            <h3 class="text-xl font-semibold mb-4 text-slate-800">Lenses</h3>
+            <ul class="space-y-2 text-slate-600">
+              <li>• 16-35mm f/2.8</li>
+              <li>• 24-70mm f/2.8</li>
+              <li>• 70-200mm f/2.8</li>
+              <li>• 100-400mm f/4.5-5.6</li>
+            </ul>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-100">
+            <h3 class="text-xl font-semibold mb-4 text-slate-800">Accessories</h3>
+            <ul class="space-y-2 text-slate-600">
+              <li>• Really Right Stuff Tripod</li>
+              <li>• Lee Filter System</li>
+              <li>• DJI RS 3 Pro Gimbal</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Hobbies & Interests -->
+      <section class="space-y-8">
+        <h2 class="text-3xl font-bold text-slate-800">Beyond Photography</h2>
+        <div class="grid md:grid-cols-4 gap-6">
+          {['Hiking', 'Travel', 'Drone Flying', 'Post-Processing'].map((hobby) => (
+            <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-100 text-center hover:shadow-md transition-shadow">
+              <h3 class="text-xl font-semibold text-slate-800">{hobby}</h3>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Software & Tools -->
+      <section class="space-y-8">
+        <h2 class="text-3xl font-bold text-slate-800">Software & Tools</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-100">
+            <h3 class="text-xl font-semibold mb-4 text-slate-800">Editing</h3>
+            <ul class="space-y-2 text-slate-600">
+              <li>• Adobe Lightroom</li>
+              <li>• Adobe Photoshop</li>
+              <li>• Capture One</li>
+            </ul>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-100">
+            <h3 class="text-xl font-semibold mb-4 text-slate-800">Video</h3>
+            <ul class="space-y-2 text-slate-600">
+              <li>• DaVinci Resolve</li>
+              <li>• Adobe Premiere Pro</li>
+              <li>• Final Cut Pro</li>
+            </ul>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-100">
+            <h3 class="text-xl font-semibold mb-4 text-slate-800">Planning</h3>
+            <ul class="space-y-2 text-slate-600">
+              <li>• PhotoPills</li>
+              <li>• The Photographer's Ephemeris</li>
+              <li>• Google Earth Pro</li>
+            </ul>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-100">
+            <h3 class="text-xl font-semibold mb-4 text-slate-800">Storage</h3>
+            <ul class="space-y-2 text-slate-600">
+              <li>• Synology NAS</li>
+              <li>• Backup Solutions</li>
+              <li>• Cloud Storage</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section class="text-center space-y-6">
+        <h2 class="text-3xl font-bold text-slate-800">Let's Connect</h2>
+        <p class="text-slate-600 max-w-2xl mx-auto">
+          Whether you're interested in collaboration, have questions about my work, or just want to say hello, I'd love to hear from you.
+        </p>
+        <a 
+          href="mailto:your.email@example.com" 
+          class="inline-block bg-slate-800 text-white px-8 py-3 rounded-full hover:bg-slate-700 transition-colors"
+        >
+          Get in Touch
+        </a>
+      </section>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  section {
+    scroll-margin-top: 2rem;
+  }
+</style>

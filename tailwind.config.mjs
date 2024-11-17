@@ -4,19 +4,28 @@ export default {
 	theme: {
 		extend: {
 			animation: {
-				'fade-in': 'fadeIn 0.5s ease-in-out',
-				'fade-out': 'fadeOut 0.3s ease-in-out',
+				'fade-in': 'fade-in 0.3s ease-in',
+				'fade-out': 'fade-out 0.3s ease-out',
+				'shake': 'shake 0.3s ease-in-out',
 			},
 			keyframes: {
-				fadeIn: {
+				'fade-in': {
 					'0%': { opacity: '0' },
 					'100%': { opacity: '1' },
 				},
-				fadeOut: {
+				'fade-out': {
 					'0%': { opacity: '1' },
 					'100%': { opacity: '0' },
 				},
+				'shake': {
+					'0%, 100%': { transform: 'translateX(0)' },
+					'25%': { transform: 'translateX(-5px)' },
+					'75%': { transform: 'translateX(5px)' },
+				}
 			},
+			scale: {
+				'102': '1.02',
+			}
 		},
 	},
 	plugins: [],
