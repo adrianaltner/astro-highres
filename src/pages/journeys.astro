@@ -1,7 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Slideshow from "../components/Slideshow";
-import PhotoQuiz from "../components/PhotoQuiz";
 
 const slides = [
   {
@@ -99,23 +98,6 @@ const slides = [
           </article>
         </section>
 
-        <!-- Photo Quiz Section -->
-        <section class="w-full py-16 bg-gray-50">
-          <div class="max-w-7xl mx-auto px-4">
-            <h2 class="text-4xl font-bold mb-8 text-center">Test Your Photography Knowledge</h2>
-            <PhotoQuiz client:load />
-          </div>
-        </section>
-
-        <section class="video-section py-16">
-          <h2 class="text-3xl font-bold text-center mb-4">Watch Our Video</h2>
-          <div class="flex justify-center">
-            <video autoplay loop class="max-w-4xl w-full">
-              <source src="236893_medium.mp4" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
-          </div>
-        </section>
       </div>
     </div>
   </main>
