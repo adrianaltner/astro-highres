@@ -1,5 +1,6 @@
 import type React from "react";
 import { useState, useEffect, useCallback } from "react";
+import { slides as defaultSlides } from '../data/slidesData'; // src/data/slidesData.ts
 
 interface SlideData {
 	image: string;
@@ -10,12 +11,12 @@ interface SlideData {
 }
 
 interface SlideshowProps {
-	slides: SlideData[];
+	slides?: SlideData[]; // Made slides optional
 	autoplayInterval?: number;
 }
 
 const Slideshow: React.FC<SlideshowProps> = ({
-	slides,
+	slides = defaultSlides, // Use defaultSlides to avoid naming conflict
 	autoplayInterval = 8000,
 }) => {
 	const [currentSlide, setCurrentSlide] = useState(0);
@@ -37,12 +38,50 @@ const Slideshow: React.FC<SlideshowProps> = ({
 		return () => clearInterval(interval);
 	}, [autoplayInterval, nextSlide]);
 
+	useEffect(() => {
+		const easeOutQuart = (t: number): number => 1 - (1 - t) ** 4;
+
+		const handleScroll = () => {
+			const slideshowContainer = document.getElementById('slideshow-container');
+			if (slideshowContainer) {
+				const scrollPosition = window.scrollY;
+				const windowHeight = window.innerHeight;
+
+				const fadeStart = windowHeight * 0.05;
+				const fadeEnd = windowHeight * 0.6;
+				const fadeRange = fadeEnd - fadeStart;
+
+				if (scrollPosition <= fadeStart) {
+					slideshowContainer.style.opacity = '1';
+					slideshowContainer.style.transform = 'scale(1) translateY(0px)';
+				} else if (scrollPosition >= fadeEnd) {
+					slideshowContainer.style.opacity = '0';
+					slideshowContainer.style.transform = 'scale(1.08) translateY(-20px)';
+				} else {
+					const progress = (scrollPosition - fadeStart) / fadeRange;
+					const eased = easeOutQuart(progress);
+					const opacity = 1 - eased;
+					const scale = 1 + eased * 0.08;
+					const translateY = -20 * eased;
+
+					slideshowContainer.style.opacity = opacity.toString();
+					slideshowContainer.style.transform = `scale(${scale}) translateY(${translateY}px)`;
+				}
+			}
+		};
+
+		window.addEventListener('scroll', handleScroll, { passive: true });
+		handleScroll();
+
+		return () => window.removeEventListener('scroll', handleScroll);
+	}, []);
+
 	return (
-		<div className="relative w-full h-screen">
+		<div id="slideshow-container" className="relative w-full h-screen">
 			{/* Slides */}
 			{slides.map((slide) => (
 				<div
-					key={slide.image} // Use a unique identifier, like slide.image or slide.id
+					key={slide.image} // Ensure slide.image is unique, otherwise replace with a more unique key
 					className={`absolute inset-0 transition-all duration-500 ease-in-out ${
 						slides.indexOf(slide) === currentSlide
 							? "opacity-100 z-10"

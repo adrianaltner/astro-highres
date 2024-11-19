@@ -1,46 +1,13 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Slideshow from "../components/Slideshow";
-
-
-const slides = [
-  {
-    image: "123.webp",
-    title: "First Section Content",
-    description: "Description for first section.",
-    quote:
-      "The only limit to our realization of tomorrow is our doubts of today.",
-    author: "Franklin D. Roosevelt",
-  },
-  {
-    image: "345.webp",
-    title: "Second Section Content",
-    description: "Description for second section.",
-    quote: "Life is 10% what happens to us and 90% how we react to it.",
-    author: "Charles R. Swindoll",
-  },
-  {
-    image: "123.webp",
-    title: "Third Section Content",
-    description: "Description for third section.",
-    quote: "The purpose of our lives is to be happy.",
-    author: "Dalai Lama",
-  },
-  {
-    image: "345.webp",
-    title: "Fourth Section Content",
-    description: "Description for fourth section.",
-    quote: "Get busy living or get busy dying.",
-    author: "Stephen King",
-  },
-];
 ---
 
 <Layout title="Highres">
   <main class="relative min-h-screen w-full">
     <!-- Hero Section with Slideshow - Fixed position -->
     <div class="fixed inset-0 w-full h-screen transition-all duration-300 ease-out pointer-events-auto" id="slideshow-container">
-      <Slideshow client:load slides={slides} />
+      <Slideshow client:load/>
     </div>
 
     <!-- Content Container - Will slide over the slideshow -->
@@ -98,8 +65,6 @@ const slides = [
             </p>
           </article>
         </section>
-
-
       </div>
     </div>
   </main>
@@ -111,53 +76,3 @@ const slides = [
     scroll-behavior: smooth;
   }
 </style>
-
-<script>
-  interface ScrollHandler {
-    easeOutQuart(t: number): number;
-    handleScroll(): void;
-  }
-
-  const scrollHandler: ScrollHandler = {
-    easeOutQuart(t: number): number {
-      return 1 - Math.pow(1 - t, 4);
-    },
-
-    handleScroll() {
-      const slideshowContainer = document.getElementById('slideshow-container');
-      if (slideshowContainer) {
-        const scrollPosition = window.scrollY;
-        const windowHeight = window.innerHeight;
-        
-        const fadeStart = windowHeight * 0.05;
-        const fadeEnd = windowHeight * 0.6;
-        const fadeRange = fadeEnd - fadeStart;
-        
-        if (scrollPosition <= fadeStart) {
-          slideshowContainer.style.opacity = '1';
-          slideshowContainer.style.transform = 'scale(1) translateY(0px)';
-        } else if (scrollPosition >= fadeEnd) {
-          slideshowContainer.style.opacity = '0';
-          slideshowContainer.style.transform = 'scale(1.08) translateY(-20px)';
-        } else {
-          const progress = (scrollPosition - fadeStart) / fadeRange;
-          const eased = this.easeOutQuart(progress);
-          const opacity = 1 - eased;
-          const scale = 1 + (eased * 0.08);
-          const translateY = -20 * eased;
-
-          slideshowContainer.style.opacity = opacity.toString();
-          slideshowContainer.style.transform = `scale(${scale}) translateY(${translateY}px)`;
-        }
-      }
-    }
-  };
-
-  // Use passive event listener for better scroll performance
-  window.addEventListener('scroll', () => {
-    requestAnimationFrame(scrollHandler.handleScroll.bind(scrollHandler));
-  }, { passive: true });
-  
-  // Initial call
-  scrollHandler.handleScroll();
-</script>
